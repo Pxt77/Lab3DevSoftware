@@ -1,30 +1,23 @@
-# Diagrama de Implantação (Texto Descritivo)
+@startuml
+skinparam nodeStyle rectangle
+left to right direction
 
-## Componentes do Sistema
+node "ClienteWeb" {
+  component "Navegador"
+}
 
-- Front-end: Aplicação web em React
-- Back-end: API RESTful (Node.js/Express ou Spring Boot)
-- Banco de Dados: MySQL ou PostgreSQL
-- Serviços de Email: SMTP (ex: SendGrid)
-- Armazenamento de Imagens: AWS S3 ou local
-- Autenticação: JWT (JSON Web Token)
+node "ServidorAplicacao" {
+  component "Módulo de Autenticação"
+  component "Módulo de Transações"
+  component "Módulo de Instituições"
+  component "Módulo de Benefícios"
+}
 
-## Infraestrutura
+node "BancoDeDados" {
+  component "Sistema de Banco de Dados"
+}
 
-```
-[Usuário]
-   |
-[Front-end React]
-   |
-[API Back-end - Autenticação, Regras de Negócio, DAO]
-   |
-[MySQL/PostgreSQL]
-   |
-[SMTP e S3 para envio de emails e imagens]
-```
+"Navegador" --> "ServidorAplicacao" : HTTP
 
-## Observações
-
-- As imagens de vantagens serão armazenadas via link externo.
-- Todos os dados sensíveis serão protegidos via autenticação.
-- O sistema é distribuído em camadas (MVC) para facilitar manutenção e escalabilidade.
+"ServidorAplicacao" --> "Sistema de Banco de Dados" : HTTP
+@enduml
