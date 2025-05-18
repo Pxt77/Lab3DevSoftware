@@ -25,7 +25,7 @@
 - nome
 - cnpj
 
-### EmpresaParceira
+### Empresa
 - id (PK)
 - nome
 - email
